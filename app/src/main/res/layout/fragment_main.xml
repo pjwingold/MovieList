@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <android.support.constraint.ConstraintLayout
+        style="@style/ContentPadded"
+        android:paddingBottom="@dimen/content_spacing">
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/Header.H1"
+            android:text="@string/movie_main_title"
+            android:textAppearance="@style/TextAppearance.Bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/movie_carousel"
+            style="@style/SectionLayout"
+            app:layout_constraintTop_toBottomOf="@id/title" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

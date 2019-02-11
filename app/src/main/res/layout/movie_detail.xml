@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="movie"
+            type="au.com.pjwin.movielist.model.Movie" />
+
+        <variable
+            name="movieStars"
+            type="int" />
+
+        <variable
+            name="casts"
+            type="au.com.pjwin.movielist.ui.NameListAdapter" />
+
+        <variable
+            name="producers"
+            type="au.com.pjwin.movielist.ui.NameListAdapter" />
+
+        <variable
+            name="writers"
+            type="au.com.pjwin.movielist.ui.NameListAdapter" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout style="@style/ContentPadded">
+
+        <ImageView
+            android:id="@+id/thumbnail"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            app:imageUrl="@{movie.poster}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/thumb" />
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/Text.Body"
+            android:layout_marginStart="@dimen/content_spacing_small"
+            android:text="@{movie.title}"
+            android:textAppearance="@style/TextAppearance.Bold"
+            app:layout_constraintStart_toEndOf="@id/thumbnail"
+            app:layout_constraintTop_toTopOf="@+id/thumbnail"
+            tools:text="Argo" />
+
+        <TextView
+            android:id="@+id/type_length_year"
+            style="@style/Text.Body"
+            android:text="@{@string/movie_detail_type_length_year(movie.genre, movie.runtime, movie.year)}"
+            app:layout_constraintStart_toStartOf="@id/title"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            tools:text="Drama - 2 Hours - 2012" />
+
+        <TextView
+            android:id="@+id/rating"
+            style="@style/Text.Body"
+            android:text="@{movie.rating}"
+            app:layout_constraintStart_toStartOf="@id/title"
+            app:layout_constraintTop_toBottomOf="@id/type_length_year"
+            tools:text="3.8" />
+
+        <TextView
+            android:id="@+id/votes"
+            style="@style/Text.Body"
+            android:layout_marginStart="@dimen/content_spacing"
+            android:text="@{movie.votes}"
+            app:layout_constraintStart_toEndOf="@id/rating"
+            app:layout_constraintTop_toBottomOf="@id/type_length_year"
+            tools:text="500 Ratings" />
+
+        <!--todo add star style -->
+        <ImageView
+            android:id="@+id/stars1"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_margin="@dimen/content_spacing_small"
+            android:src="@{movieStars >= 1 ? @drawable/star_copy_2 : @drawable/star_copy5_3}"
+            app:layout_constraintStart_toEndOf="@id/votes"
+            app:layout_constraintTop_toTopOf="@id/rating"
+            tools:src="@drawable/star_copy_2" />
+
+        <ImageView
+            android:id="@+id/stars2"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_margin="@dimen/content_spacing_small"
+            android:src="@{movieStars >= 2 ? @drawable/star_copy_2 : @drawable/star_copy5_3}"
+            app:layout_constraintStart_toEndOf="@id/stars1"
+            app:layout_constraintTop_toTopOf="@id/rating"
+            tools:src="@drawable/star_copy_2" />
+
+        <ImageView
+            android:id="@+id/stars3"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_margin="@dimen/content_spacing_small"
+            android:src="@{movieStars >= 3 ? @drawable/star_copy_2 : @drawable/star_copy5_3}"
+            app:layout_constraintStart_toEndOf="@id/stars2"
+            app:layout_constraintTop_toTopOf="@id/rating"
+            tools:src="@drawable/star_copy_2" />
+
+        <ImageView
+            android:id="@+id/stars4"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_margin="@dimen/content_spacing_small"
+            android:src="@{movieStars >= 4 ? @drawable/star_copy_2 : @drawable/star_copy5_3}"
+            app:layout_constraintStart_toEndOf="@id/stars3"
+            app:layout_constraintTop_toTopOf="@id/rating"
+            tools:src="@drawable/star_copy_2" />
+
+        <ImageView
+            android:id="@+id/stars5"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_margin="@dimen/content_spacing_small"
+            android:src="@{movieStars >= 5 ? @drawable/star_copy_2 : @drawable/star_copy5_3}"
+            app:layout_constraintStart_toEndOf="@id/stars4"
+            app:layout_constraintTop_toTopOf="@id/rating"
+            tools:src="@drawable/star_copy5_3" />
+
+        <TextView
+            android:id="@+id/plot"
+            style="@style/Text.Body"
+            android:layout_marginTop="@dimen/content_spacing"
+            android:text="@{movie.plot}"
+            android:textAppearance="@style/TextAppearance"
+            app:layout_constraintTop_toBottomOf="@id/thumbnail"
+            tools:text="@string/plot_test" />
+
+        <View
+            android:id="@+id/separator1"
+            style="@style/SectionSeparator"
+            android:layout_marginTop="@dimen/content_spacing"
+            app:layout_constraintTop_toBottomOf="@id/plot" />
+
+        <TextView
+            android:id="@+id/cast"
+            style="@style/Text.Body"
+            android:layout_marginTop="@dimen/content_spacing_large"
+            android:text="@string/movie_detail_cast"
+            android:textAppearance="@style/TextAppearance.Bold"
+            app:layout_constraintTop_toBottomOf="@id/separator1" />
+
+        <LinearLayout
+            android:id="@+id/cast_list"
+            style="@style/WrapContentLayout"
+            android:orientation="vertical"
+            app:adapter="@{casts}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cast"
+            tools:layout_height="80dp" />
+
+        <TextView
+            android:id="@+id/director"
+            style="@style/Text.Body"
+            android:text="@string/movie_detail_director"
+            android:textAppearance="@style/TextAppearance.Bold"
+            app:layout_constraintStart_toStartOf="@id/director_name"
+            app:layout_constraintTop_toTopOf="@id/cast" />
+
+        <TextView
+            android:id="@+id/director_name"
+            style="@style/Text.Body"
+            android:layout_marginEnd="@dimen/content_spacing_large"
+            android:text="@{movie.director}"
+            android:textAppearance="@style/TextAppearance"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/director"
+            tools:text="Ben Afflec" />
+
+        <TextView
+            android:id="@+id/producer"
+            style="@style/Text.Body"
+            android:text="@string/movie_detail_producers"
+            android:textAppearance="@style/TextAppearance.Bold"
+            app:layout_constraintStart_toStartOf="@id/cast"
+            app:layout_constraintTop_toBottomOf="@id/cast_list" />
+
+        <LinearLayout
+            android:id="@+id/producer_list"
+            style="@style/WrapContentLayout"
+            android:orientation="vertical"
+            app:adapter="@{producers}"
+            app:layout_constraintStart_toStartOf="@id/producer"
+            app:layout_constraintTop_toBottomOf="@id/producer"
+            tools:layout_height="50dp" />
+
+        <TextView
+            android:id="@+id/screenwriter"
+            style="@style/Text.Body"
+            android:text="@string/movie_detail_screenwriter"
+            android:textAppearance="@style/TextAppearance.Bold"
+            app:layout_constraintStart_toStartOf="@id/director_name"
+            app:layout_constraintTop_toBottomOf="@id/director_name" />
+
+        <LinearLayout
+            android:id="@+id/screenwriter_list"
+            style="@style/WrapContentLayout"
+            android:orientation="vertical"
+            app:adapter="@{writers}"
+            app:layout_constraintStart_toStartOf="@id/director_name"
+            app:layout_constraintTop_toBottomOf="@id/screenwriter" />
+
+        <View
+            android:id="@+id/separator2"
+            style="@style/SectionSeparator"
+            android:layout_marginTop="@dimen/content_spacing_large"
+            app:layout_constraintTop_toBottomOf="@id/producer_list" />
+
+        <TextView
+            android:id="@+id/information"
+            style="@style/Text.Body"
+            android:layout_marginTop="@dimen/content_spacing_large"
+            android:text="@string/movie_detail_information"
+            android:textAppearance="@style/TextAppearance.Bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/separator2" />
+
+        <TextView
+            android:id="@+id/studio"
+            style="@style/Text.Body"
+            android:layout_marginTop="@dimen/content_spacing_large"
+            android:textAppearance="@style/TextAppearance"
+            app:html="@{@string/movie_detail_studio(movie.studio)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/information"
+            tools:text="Studio: " />
+
+        <TextView
+            android:id="@+id/genre"
+            style="@style/Text.Body"
+            android:textAppearance="@style/TextAppearance"
+            app:html="@{@string/movie_detail_genre(movie.genre)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/studio"
+            tools:text="Genre: " />
+
+        <TextView
+            android:id="@+id/released"
+            style="@style/Text.Body"
+            android:textAppearance="@style/TextAppearance"
+            app:html="@{@string/movie_detail_released_year(movie.year)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/genre"
+            tools:text="Released: " />
+
+        <TextView
+            android:id="@+id/copyright"
+            style="@style/Text.Body"
+            android:textAppearance="@style/TextAppearance"
+            app:html="@{@string/movie_detail_copyright(movie.copyRight)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/released"
+            tools:text="Copyright: " />
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

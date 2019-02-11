@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">MovieList</string>
+
+    <string name="movie_detail_cast">Cast &amp; Crew</string>
+    <string name="movie_detail_copyright"><![CDATA[<b>Copyright:</b> &#169; %1$s]]></string>
+    <string name="movie_detail_director">Director</string>
+    <string name="movie_detail_genre"><![CDATA[<b>Genre:</b> %1$s]]></string>
+    <string name="movie_detail_information">Information</string>
+    <string name="movie_detail_producers">Producers</string>
+    <string name="movie_detail_screenwriter">Screenwriter</string>
+    <string name="movie_detail_studio"><![CDATA[<b>Studio:</b> %1$s]]></string>
+    <string name="movie_detail_type_length_year">%1$s - %2$s - %3$s</string>
+    <string name="movie_detail_released_year"><![CDATA[<b>Released:</b> %1$s]]></string>
+
+    <string name="movie_main_title">Movies</string>
+
+    <string name="plot_test">Acting under the cover of a Hollywood producer scouting a location for a science fiction film, a CIA agent launches a dangerous operation to rescue six Americans in Tehran during the U.S. hostage crisis in Iran in 1979.</string>
+</resources>

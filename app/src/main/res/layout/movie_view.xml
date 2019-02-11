@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="movie"
+            type="au.com.pjwin.movielist.model.Movie" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout style="@style/MatchParentLayout">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/poster"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_margin="6dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp">
+
+            <ImageView
+                style="@style/MatchParentLayout"
+                android:scaleType="centerCrop"
+                app:imageUrl="@{movie.poster}"
+                tools:src="@drawable/thumb" />
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/Text.Body"
+            android:layout_marginTop="@dimen/content_spacing_large"
+            android:text="@{movie.title}"
+            android:textAppearance="@style/TextAppearance.Bold"
+            app:layout_constraintStart_toStartOf="@id/poster"
+            app:layout_constraintTop_toBottomOf="@id/poster"
+            tools:text="Argo" />
+
+        <TextView
+            android:id="@+id/type_length_year"
+            style="@style/WrapContentLayout"
+            android:text="@{@string/movie_detail_type_length_year(movie.genre, movie.runtime, movie.year)}"
+            app:layout_constraintStart_toStartOf="@id/title"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            tools:text="Drama - 2 Hours - 2012" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>
