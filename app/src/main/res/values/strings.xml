@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MovieList</string>
+    <string name="app_name">Movie List</string>
 
     <string name="movie_detail_cast">Cast &amp; Crew</string>
     <string name="movie_detail_copyright"><![CDATA[<b>Copyright:</b> &#169; %1$s]]></string>

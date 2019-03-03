@@ -1,33 +1,34 @@
 package au.com.pjwin.movielist
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.MenuItem
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
 import au.com.pjwin.commonlib.ui.ViewActivity
-import au.com.pjwin.movielist.ui.MovieDetailFragment
-import au.com.pjwin.movielist.ui.MovieFragment
 
 class MainActivity : ViewActivity() {
+
+    private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         if (savedInstanceState == null) {
-            showFragment(MovieFragment())
+            val hostFragment = getExistingFragment<NavHostFragment>(R.id.nav_host_fragment)
+                    ?: return
+
+            val naviController = hostFragment.navController
+
+            appBarConfiguration = AppBarConfiguration(naviController.graph)
+
+            setupActionBarWithNavController(naviController, appBarConfiguration)
         }
     }
 
-    override fun onPrimaryAction(fragment: Fragment) {
-        when (fragment) {
-            is MovieFragment -> {
-                fragment.selectedMovie?.let { showFragment(MovieDetailFragment.newInstance(it)) }
-            }
-
-            else -> super.onPrimaryAction(fragment)
-        }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        return super.onOptionsItemSelected(item)
+    override fun onSupportNavigateUp(): Boolean {
+        return findNavController(R.id.nav_host_fragment).navigateUp(appBarConfiguration)
     }
 }

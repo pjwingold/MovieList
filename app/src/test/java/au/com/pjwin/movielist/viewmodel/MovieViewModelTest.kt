@@ -22,6 +22,6 @@ class MovieViewModelTest : BaseTest() {
     fun getMovies() {
         viewModel.getMovies()
 
-        verify(atMost = 1) { viewModel.onData(any()) }
+        verify(exactly = 1) { viewModel.onData(any()) }
     }
 }

@@ -1,8 +1,8 @@
 package au.com.pjwin.movielist.ui
 
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
 import android.view.View
+import androidx.navigation.findNavController
 import au.com.pjwin.commonlib.ui.BaseFragment
 import au.com.pjwin.commonlib.ui.adapter.ListClickListener
 import au.com.pjwin.movielist.R
@@ -15,7 +15,8 @@ class MovieFragment : BaseFragment<DataResponse, MovieViewModel, FragmentMainBin
 
     private lateinit var movieAdapter: MovieAdapter
     private lateinit var movieList: List<Movie>
-    var selectedMovie: Movie? = null
+
+    override fun pageTitle() = R.string.app_name
 
     override fun layoutId() = R.layout.fragment_main
 
@@ -28,17 +29,13 @@ class MovieFragment : BaseFragment<DataResponse, MovieViewModel, FragmentMainBin
         super.onViewCreated(view, savedInstanceState)
         viewModel.getMovies()
         binding.movieCarousel.apply {
-            //val carouselLayoutManager = CarouselLayoutManager(CarouselLayoutManager.HORIZONTAL)
             //carouselLayoutManager.setPostLayoutListener(CarouselZoomPostLayoutListener())
-            layoutManager = //carouselLayoutManager
-            LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
             setHasFixedSize(true)
             //addOnScrollListener(CenterScrollListener())
             movieAdapter = MovieAdapter(context, movieList, object :
-                ListClickListener<Movie> {
+                    ListClickListener<Movie> {
                 override fun onClick(data: Movie) {
-                    selectedMovie = data
-                    onPrimaryAction()
+                    findNavController().navigate(R.id.step_movie_detail, MovieFragmentArgs.Builder(data).build().toBundle())
                 }
             })
 

@@ -5,6 +5,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs'
 
 android {
     buildToolsVersion prop("version.build.tools")
@@ -18,8 +19,8 @@ android {
         versionName project.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-        buildConfigField 'long', 'CONNECTION_TIMEOUT', '5'
-        buildConfigField 'long', 'READ_TIMEOUT', '5'
+        buildConfigField 'long', 'CONNECTION_TIMEOUT', '15'
+        buildConfigField 'long', 'READ_TIMEOUT', '15'
     }
     buildTypes {
         release {

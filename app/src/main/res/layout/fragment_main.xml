@@ -2,7 +2,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
     <android.support.constraint.ConstraintLayout
         style="@style/ContentPadded"
         android:paddingBottom="@dimen/content_spacing">
@@ -17,7 +16,9 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/movie_carousel"
-            style="@style/SectionLayout"
+            style="@style/MatchParentLayout"
+            android:orientation="horizontal"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
             app:layout_constraintTop_toBottomOf="@id/title" />
 
     </android.support.constraint.ConstraintLayout>
