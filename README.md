@@ -10,6 +10,8 @@ ViewModel: network calls can survive orientation change, no activity leak
 
 LiveData: notify UI(view) about changes from downstream
 
+Navigation: greatly simplified navigation between screen
+
 RecylerView: to display a list of property
 
 constraintlayout: flexible UI component arrangement
